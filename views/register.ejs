@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+           /* background-color: #f5f5f5;*/
+            background-image: url('/imag.jpg'); 
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd; 
+            max-width: 600px; 
+            width: 100%; 
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            color: red; 
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+   <!-- <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/" style="color: white;">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color: white;"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home Page</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+         Navbar 
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/" style="color: white;">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="color: white;"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    -->
+
+    <!-- Register Form Container -->
+    <div class="container">
+        <h1>Register</h1>
+
+        <ul>
+            <% if (typeof errors != 'undefined') { %>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% }) %>
+            <% } %>
+        </ul>
+
+        <form action="/users/register" method="POST">
+            <div>
+                <input type="text" id="name" name="name" placeholder="Name" required />
+            </div>
+            <div>
+                <input type="email" id="email" name="email" placeholder="Email" required />
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Password" required />
+            </div>
+            <div>
+                <input type="password" id="password2" name="password2" placeholder="Confirm Password" required />
+            </div>
+            <div>
+                <input type="submit" value="Register" />
+            </div>
+
+            <a href="/users/login">Already registered? Login here</a>
+        </form>
+    </div>
+</body>
+</html>

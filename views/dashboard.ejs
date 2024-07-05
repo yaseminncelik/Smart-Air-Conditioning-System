@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .main-content {
+      padding: 20px;
+    }
+
+    h4 {
+      display: flex;
+      justify-content: center;
+      font-size: 50px;
+      font-style: italic;
+      margin-bottom: 1cm;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 24px;
+    }
+
+    #mod {
+      color: #120a8f;
+      font-weight: bold;
+    }
+
+    .card-title {
+      font-weight: bold;
+      color: #1b11a8;
+      font-size: 1.2em;
+    }
+
+    .infos {
+      display: flex;
+      gap: 20px;
+      align-content: stretch;
+      justify-content: center;
+    }
+
+    .info {
+      font-size: 18px;
+      font-weight: bolder;
+      color: rgb(15, 15, 15);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main Card Wrapper -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card main-card">
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home Page</a>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Logout</a>
+                  </li>
+                </ul>
+              </div>
+          </nav>
+
+          <div class="main-content">
+            <h4>Hello, <%= user %></h4>
+
+            <div class="infos">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sıcaklık Değeri:</h5>
+                  <p class="card-text info"><span id="temp"><%= temp %></span>°</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Kombi Durumu:</h5>
+                  <p class="card-text info"><span id="status"><%= isOpen ? 'Açık' : 'Kapalı' %></span></p>
+                </div>
+              </div>
+            </div>
+
+            <p>Şu an <span id="mod"><%= mod == 'kis' ? 'kış' : mod %></span> modundasınız.</p>
+
+            <!-- İlk kart grubu -->
+            <div class="cards">
+              <!-- İlk kart -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Yaz Modu</h5>
+                  <p class="card-text">Yazın hava sıcaklıklarının artması sebebiyle bu mod daha tasarrfulu bir kullanım sağlar.</p>
+                  <a href="#" class="btn btn-sm btn-primary mode" data-mode="yaz">Modu Seç</a>
+                </div>
+              </div>
+
+              <!-- İkinci kart -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Kış Modu</h5>
+                  <p class="card-text">Kış aylarında hava derecelerinin soğuması sebebiyle bu modu kullanmanız sizin için daha kullanışlı olacaktır.</p>
+                  <a href="#" class="btn btn-sm btn-primary mode" data-mode="kis">Modu Seç</a>
+                </div>
+              </div>
+
+              <!-- Üçüncü kart -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">İlkbahar Modu</h5>
+                  <p class="card-text">İlkbahar aylarında değişen hava sıcaklık ve nem değerlerine göre bu modu kullanmanız sizin için daha uygun olacaktır.</p>
+                  <a href="#" class="btn btn-sm btn-primary mode" data-mode="ilkbahar">Modu Seç</a>
+                </div>
+              </div>
+
+              <!-- Dördüncü kart -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sonbahar Modu</h5>
+                  <p class="card-text">Sonbahar aylarında değişen hava sıcaklık ve nem değerlerine göre bu modu kullanmanız sizin için daha uygun olacaktır</p>
+                  <a href="#" class="btn btn-sm btn-primary mode" data-mode="sonbahar">Modu Seç</a>
+                </div>
+              </div>
+
+              <!-- Beşinci kart -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Açma Modu</h5>
+                  <p class="card-text">Evde bulunup bulunmama durumunuza göre bu modu kullanıp kombi açma işlemini yapabilirsiniz.</p>
+                  <a href="#" class="btn btn-sm btn-primary mode" data-mode="ac">Modu Seç</a>
+                </div>
+              </div>
+
+              <!-- Altıncı kart -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Kapama Modu</h5>
+                  <p class="card-text">Evde bulunup bulunmama durumunuza göre bu modu kullanarak kombi kapama işlemini yapabilirsiniz.</p>
+                  <a href="#" class="btn btn-sm btn-primary mode" data-mode="kapa">Modu Seç</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let modeBtns = document.getElementsByClassName('mode');
+    modeBtns = Array.from(modeBtns);
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        fetch('/modlar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            mod: btn.dataset.mode
+          })
+        }).then(res => {
+          if (res.status === 200) {
+            location.reload();
+          }
+        });
+        console.log('basıldı', btn.dataset.mode);
+      })
+    });
+
+    var es = new EventSource('/events');
+
+    es.onmessage = function (event) {
+      let data = JSON.parse(event.data);
+      console.log(event);
+      let tempEl = document.getElementById('temp');
+      tempEl.innerText = data.temp;
+      let statusEl = document.getElementById('status');
+      statusEl.innerText = data.isOpen ? 'Açık' : 'Kapalı';
+    };
+    es.onerror = function(event) {
+      location.reload();
+    };
+  </script>
+</body>
+</html>

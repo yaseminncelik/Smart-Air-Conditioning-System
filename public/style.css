@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100dvh;
+  font-size: 14px;
+  padding:  20px 7%;
+  background-color: #E6F5FF;
+}
+
+.navbar-brand {
+  font-size: 18px;
+}
+
+/* Navbar'ı Discord mavisi yapma */
+.navbar {
+  background-color: #95BCFA;
+  font-size: 18px;
+  font-weight: bold;
+  /* Discord mavisi */
+}
+
+/* Navbar içindeki öğelerin rengini beyaz yapma */
+.navbar-nav .nav-link {
+  color: rgb(104, 104, 104);
+}
+
+.navbar-nav .nav-link:hover {
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #A3CFFA;
+  color: white;
+  padding: 0.5px;
+  text-align: center;
+}
